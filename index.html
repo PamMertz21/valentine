@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💝</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="backgroundMusic" preload="auto">
+        <source src="mp3/MATEO - Pinipili (Official Lyric Video).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Login Screen -->
+    <div id="loginContainer" class="container active">
+        <div class="login-box">
+            <h1 class="login-title">💻 VALENTINE LOGIN SYSTEM 💻</h1>
+            <p class="login-subtitle">Access Restricted - Authorized Personnel Only</p>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username (Full Name):</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter full name"
+                        required
+                    >
+                    <span class="hint">Expected: Vhianca Yzavel D. Vicente</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">6-PIN Password (Anniversary):</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="••••••"
+                        maxlength="6"
+                        required
+                    >
+                    <span class="hint">Format: MMDDYY</span>
+                </div>
+
+                <button type="submit" class="btn-login">ACCESS SYSTEM</button>
+            </form>
+
+            <div id="loginError" class="error-message" style="display: none;"></div>
+            <div class="terminal-effect">
+                <p>> Awaiting credentials...</p>
+                <p>> Security level: HIGH</p>
+                <p>> Access attempt: <span id="attemptCount">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Proposal Screen -->
+    <div id="proposalContainer" class="container">
+        <div class="proposal-content">
+            <div class="matrix-background"></div>
+            
+            <div class="proposal-header">
+                <h1 class="greeting">Hello, <span id="userGreeting">Palangga</span>! 💕</h1>
+                <p class="subtitle">Access Level: HEART_ADMIN</p>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="gallery-section">
+                <h2>Our Memories.exe 📸</h2>
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <img src="img/077c8b6c-c36d-47b0-87ef-c872e5100463.jpg" alt="Memory 1" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/0bfa61f7-8639-463c-bc7f-8106ce069df0.jpg" alt="Memory 2" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/60424606-1301-4ae6-b333-93c8857f49c7.jpg" alt="Memory 3" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/da16e49f-52ef-478f-995a-2230c9c873bf.jpg" alt="Memory 4" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Section -->
+            <div class="message-section">
+                <div class="code-block">
+                    <div class="code-line"><span class="keyword">if</span> (I_Love_You) {</div>
+                    <div class="code-line indent-1"><span class="keyword">while</span> (true) {</div>
+                    <div class="code-line indent-2"><span class="function">heart.beat</span>() <span class="comment">// thinking about you</span></div>
+                    <div class="code-line indent-2"><span class="function">love.multiply</span>(Infinity) <span class="comment">// forever growing</span></div>
+                    <div class="code-line indent-1">}</div>
+                    <div class="code-line">}</div>
+                </div>
+
+                <div class="love-message">
+                    <p>My dearest <strong>Vhianca Yzavel D. Vicente</strong>,</p>
+                    
+                    <p>Mahal, Bebi, Palangga, and many more, you know I'm not always good with words, so I thought I'd speak the language I know best—code. But even algorithms can't compute how much you mean to me.</p>
+
+                    <p>Every moment with you feels like a perfectly executed program. No bugs, just pure happiness. You're the variable that makes my life complete, the function that runs smoothly through every day.</p>
+
+                    <p>Since 09/21/18, you've been the best update to my life. And I don't want to debug anything about us—you're already perfect.</p>
+
+                    <p>So, I'm executing this special request with all the processing power of my heart:</p>
+
+                    <div class="question-box">
+                        <h2>🎯 SYSTEM QUERY 🎯</h2>
+                        <p class="the-question">Will you be my Valentine?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Buttons -->
+            <div class="buttons-container">
+                <button id="yesBtn" class="btn btn-yes">YES! 💕</button>
+                <button id="noBtn" class="btn btn-no">NO</button>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message" style="display: none;">
+                <h2>💌 YES! I'm sending your invitation... 💌</h2>
+                <p>Check your email for the special Valentine's date details! 📧</p>
+                <p class="heart-animation">💕 💕 💕</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

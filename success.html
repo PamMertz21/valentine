@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>💕 You're Invited 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Flowery success page styles (keeps base styles from styles.css) */
+        body {
+            background: radial-gradient(circle at 10% 10%, #fff0f6 0%, #ffe6f2 20%, #f4ecff 60%, #1a0033 100%);
+            color: #3b0b3b;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .flowery-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,240,245,0.75));
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            border: 3px solid rgba(255,20,147,0.12);
+            text-align: center;
+        }
+        h1.flowery {
+            font-size: 42px;
+            color: #b30059;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        p.lead {
+            font-size: 18px;
+            color: #6b1746;
+            margin-bottom: 18px;
+        }
+        .invitation-box {
+            background: linear-gradient(180deg, rgba(255,245,250,0.6), rgba(255,235,245,0.6));
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(179,0,89,0.08);
+            margin: 20px auto;
+            max-width: 700px;
+            text-align: left;
+            color: #4b143a;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .invitation-box h2 {
+            color: #b30059;
+            margin-top: 0;
+            font-family: 'Courier New', monospace;
+        }
+        .hearts-row {
+            margin: 18px 0;
+            font-size: 24px;
+            text-align: center;
+        }
+        .btn-row {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .btn-action {
+            padding: 12px 22px;
+            border-radius: 30px;
+            border: 2px solid rgba(179,0,89,0.12);
+            background: linear-gradient(135deg,#ffb6d9,#ff8fc3);
+            color: #2b002b;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(75,20,58,0.08);
+            color: #4b143a;
+        }
+        .flower-decor {
+            font-size: 48px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        .print-note { font-size: 13px; color: #7a3b53; margin-top: 12px; }
+        @media (max-width: 600px) {
+            h1.flowery { font-size: 28px; }
+            .invitation-box { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+<body>
+    <!-- Background Music (continues from login page) -->
+    <audio id="backgroundMusic" preload="auto">
+        <source src="mp3/MATEO - Pinipili (Official Lyric Video).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="flowery-container">
+        <div class="flower-decor">🌸 🌿 🌺</div>
+        <h1 class="flowery">YEEEESSSS!!! 💖</h1>
+        <p class="lead">Everything is set — the invitation has been sent. Below are the special details I prepared just for you.</p>
+
+        <div class="invitation-box">
+            <h2>💌 A Special Invitation</h2>
+            <p>My dearest <strong id="inviteName">Palangga</strong>,</p>
+            <p>I am overjoyed you said "YES". Please join me for a cozy evening filled with warmth, lovely conversations, and the sweetest memories.</p>
+
+            <p><strong>Date:</strong> February 14, 2026 (Valentine's Day)<br>
+            <strong>Time:</strong> 6:00 PM<br>
+            <strong>Location:</strong> <span id="inviteLocation">La Dolce Restaurant</span><br>
+            <strong>Address:</strong> <span id="inviteAddress">Brgy.7, Cabadbaran City</span></p>
+
+            <div class="hearts-row">🌹 💕 🌷</div>
+
+            <p>I can't wait to celebrate this special day with you. Wear something that makes you feel beautiful — I'll handle the rest. With all my love, always.</p>
+        </div>
+
+        <div class="btn-row">
+            <a href="index.html" class="btn-action btn-secondary">Return Home</a>
+            <button id="printBtn" class="btn-action">Print Invitation</button>
+        </div>
+        <p class="print-note">Tip: Use the print button to save this invitation as a PDF keepsake.</p>
+    </div>
+
+    <script>
+        // Read name & optional location/address from URL query params
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        const nameParam = getQueryParam('name') || 'Palangga';
+        const locationParam = getQueryParam('location') || 'La Dolce Restaurant';
+        const addressParam = getQueryParam('address') || 'Brgy. 7 Cabadbaran City';
+
+        document.getElementById('inviteName').textContent = decodeURIComponent(nameParam);
+        document.getElementById('inviteLocation').textContent = decodeURIComponent(locationParam);
+        document.getElementById('inviteAddress').textContent = decodeURIComponent(addressParam);
+        
+        // Resume music from saved time (or just let it continue if still playing)
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('backgroundMusic');
+            if (audio) {
+                const savedTime = sessionStorage.getItem('musicTime');
+                if (savedTime) {
+                    audio.currentTime = parseFloat(savedTime);
+                    sessionStorage.removeItem('musicTime');
+                    audio.play().catch(err => console.log('Audio autoplay prevented:', err));
+                }
+            }
+        });
+
+        document.getElementById('printBtn').addEventListener('click', () => {
+            window.print();
+        });
+    </script>
+</body>
+</html>
